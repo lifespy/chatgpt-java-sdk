@@ -1,12 +1,10 @@
 package com.unfbx.chatgpt.entity.chat;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * 描述：
@@ -17,6 +15,8 @@ import java.io.Serializable;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Message implements Serializable {
+
+    private static final long serialVersionUID = 3653644261185890632L;
 
     /**
      * 目前支持三中角色参考官网，进行情景输入：https://platform.openai.com/docs/guides/chat/introduction

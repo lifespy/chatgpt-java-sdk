@@ -34,6 +34,7 @@ public class TikTokensUtil {
         for (ModelType modelType : ModelType.values()) {
             modelMap.put(modelType.getName(), registry.getEncodingForModel(modelType));
         }
+        modelMap.put(ChatCompletion.Model.AZURE_GPT_3_5_TURBO.getName(), registry.getEncodingForModel(ModelType.GPT_3_5_TURBO));
         modelMap.put(ChatCompletion.Model.GPT_3_5_TURBO_0301.getName(), registry.getEncodingForModel(ModelType.GPT_3_5_TURBO));
         modelMap.put(ChatCompletion.Model.GPT_4_32K.getName(), registry.getEncodingForModel(ModelType.GPT_4));
         modelMap.put(ChatCompletion.Model.GPT_4_32K_0314.getName(), registry.getEncodingForModel(ModelType.GPT_4));

@@ -26,7 +26,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class ChatCompletion implements Serializable {
 
-    @NonNull
     @Builder.Default
     private String model = Model.GPT_3_5_TURBO.getName();
     /**
@@ -112,6 +111,10 @@ public class ChatCompletion implements Serializable {
     @Getter
     @AllArgsConstructor
     public enum Model {
+        /**
+         * 微软gpt-3.5-turbo
+         */
+        AZURE_GPT_3_5_TURBO("2023-03-15-preview"),
         /**
          * gpt-3.5-turbo
          */

@@ -7,7 +7,9 @@ package com.unfbx.chatgpt.exception;
  *  2023-02-11
  */
 public enum CommonError implements IError {
+    API_MODEL_NOT_NUL(500, "API MODEL 不能为空"),
     API_KEYS_NOT_NUL(500, "API KEYS 不能为空"),
+    API_HOST_NOT_NUL(500, "API HOST 不能为空"),
     NO_ACTIVE_API_KEYS(500, "没有可用的API KEYS"),
     SYS_ERROR(500, "系统繁忙"),
     PARAM_ERROR(501, "参数异常"),

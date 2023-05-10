@@ -85,7 +85,7 @@ public class OpenAiStreamClientTest {
 
     @Test
     public void chatCompletions() {
-        ConsoleEventSourceListener eventSourceListener = new ConsoleEventSourceListener();
+
         Message message = Message.builder().role(Message.Role.USER).content("random one word！").build();
         ChatCompletion chatCompletion = ChatCompletion
                 .builder()
@@ -95,8 +95,9 @@ public class OpenAiStreamClientTest {
                 .messages(Arrays.asList(message))
                 .stream(true)
                 .build();
-        client.streamChatCompletion(chatCompletion, eventSourceListener);
         CountDownLatch countDownLatch = new CountDownLatch(1);
+        ConsoleEventSourceListener eventSourceListener = new ConsoleEventSourceListener(countDownLatch);
+        client.streamChatCompletion(chatCompletion, eventSourceListener);
         try {
             countDownLatch.await();
         } catch (InterruptedException e) {
@@ -106,13 +107,14 @@ public class OpenAiStreamClientTest {
 
     @Test
     public void completions() {
-        ConsoleEventSourceListener eventSourceListener = new ConsoleEventSourceListener();
+
         Completion q = Completion.builder()
                 .prompt("我想申请转专业，从计算机专业转到会计学专业，帮我完成一份两百字左右的申请书")
                 .stream(true)
                 .build();
-        client.streamCompletions(q, eventSourceListener);
         CountDownLatch countDownLatch = new CountDownLatch(1);
+        ConsoleEventSourceListener eventSourceListener = new ConsoleEventSourceListener(countDownLatch);
+        client.streamCompletions(q, eventSourceListener);
         try {
             countDownLatch.await();
         } catch (InterruptedException e) {
